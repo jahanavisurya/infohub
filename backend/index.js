@@ -1,0 +1,15 @@
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
+const app = express();
+app.use(cors());
+app.use(express.json());
+const weatherRouter = require('./routes/weather');
+const convertRouter = require('./routes/convert');
+const quoteRouter = require('./routes/quote');
+app.use('/api/weather', weatherRouter);
+app.use('/api/convert', convertRouter);
+app.use('/api/quote', quoteRouter);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`InfoHub backend listening on ${PORT}`));
