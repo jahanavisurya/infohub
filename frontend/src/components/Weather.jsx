@@ -6,7 +6,8 @@ export default function Weather(){
   const fetchWeather = async ()=>{
     setErr(''); setLoading(true); setData(null)
     try{
-      const r = await axios.get('http://localhost:5000/api/weather',{params:{city}});
+      const r = await axios.get('fetch("https://infohub-54tf.onrender.com/api/weather?city=" + city)
+',{params:{city}});
       setData(r.data)
     }catch(e){ setErr(e.response?.data?.error || e.message) }
     setLoading(false)
